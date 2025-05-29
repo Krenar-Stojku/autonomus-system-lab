@@ -5,7 +5,7 @@ skinparam class {
     BorderColor Black
 }
 
-title Block Definition Diagram – Scenario 11: Human Driver Override
+title Block Definition Diagram – Scenario: Human Driver Override
 
 class "Truck" {
     +ID: String
