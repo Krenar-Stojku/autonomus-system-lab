@@ -1,0 +1,9 @@
+@startuml
+[*] --> Autonomous
+
+Autonomous --> ManualOverrideDetected : Driver input detected
+ManualOverrideDetected --> ExitingPlatoon : Send override signal
+ExitingPlatoon --> ManualDriving : Disengage from platoon
+ManualDriving --> [*]
+
+@enduml

@@ -1,0 +1,58 @@
+@startuml
+skinparam class {
+    BackgroundColor White
+    ArrowColor Black
+    BorderColor Black
+}
+
+title Block Definition Diagram – Scenario 11: Human Driver Override
+
+class "Truck" {
+    +ID: String
+    +Mode: {Autonomous, Manual}
+    +detectOverride(): void
+    +sendOverrideSignal(): void
+    +disengage(): void
+}
+class "Truck" #ADD8E6
+
+class "Platoon" {
+    +trucks: List<Truck>
+    +leader: Truck
+    +adjustFormation(): void
+    +reassignRoles(): void
+}
+class "Platoon" #FFD580
+
+class "OverrideDetectionModule" {
+    +monitorInput(): void
+    +overrideDetected: Boolean
+}
+class "OverrideDetectionModule" #C1E1C1
+
+class "CommunicationModule" {
+    +sendMessage(to: Truck, msg: String): void
+    +receiveMessage(): String
+}
+class "CommunicationModule" #E6E6FA
+
+class "HumanDriver" {
+    +steeringInput(): void
+    +brakeInput(): void
+}
+class "HumanDriver" #FFB6C1
+
+class "FallbackController" {
+    +switchToManual(): void
+    +initiateSafeExit(): void
+}
+class "FallbackController" #FFA07A
+
+Truck --> OverrideDetectionModule : <<uses>>
+Truck --> CommunicationModule : <<uses>>
+Truck --> FallbackController : <<uses>>
+HumanDriver --> Truck : <<controls>>
+Platoon *-- Truck : <<includes>>
+Platoon --> CommunicationModule : <<uses>>
+
+@enduml

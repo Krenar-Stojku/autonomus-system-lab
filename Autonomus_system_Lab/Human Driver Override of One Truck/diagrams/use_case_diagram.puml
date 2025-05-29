@@ -1,0 +1,14 @@
+@startuml
+actor "Human Driver" as Driver
+actor "Platoon Leader" as Leader
+actor "Truck System" as Truck
+
+Driver --> (Take Manual Control)
+(Take Manual Control) --> (Detect Override)
+(Detect Override) --> (Notify Platoon)
+(Notify Platoon) --> Leader
+(Notify Platoon) --> (Adjust Platoon)
+(Adjust Platoon) --> (Reconfigure Roles)
+(Adjust Platoon) --> (Maintain Safe Distance)
+
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+actor Human
+participant Truck
+participant "Platoon Leader" as Leader
+participant "Following Trucks" as Followers
+
+Human -> Truck: Manual input (steering/brake)
+Truck -> Truck: Detect override
+Truck -> Leader: Send override signal
+Truck -> Followers: Broadcast detachment
+Leader -> Followers: Confirm platoon update
+Truck -> Truck: Switch to manual mode
+
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+start
+:Detect manual override;
+:Notify leader and followers;
+fork
+  :Truck switches to manual mode;
+fork again
+  :Platoon adjusts spacing and roles;
+end fork
+:Truck continues manually;
+stop
+@enduml
